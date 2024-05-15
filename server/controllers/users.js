@@ -1,8 +1,8 @@
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const config = require('../config');
-const { validationResult } = require('express-validator');
-const User = require('../models/User');
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const config = require("../config");
+const { validationResult } = require("express-validator");
+const User = require("../models/User");
 
 // @route   POST api/users
 // @desc    Register User
@@ -24,7 +24,7 @@ exports.register = async (req, res) => {
       return res.status(400).json({
         errors: [
           {
-            msg: 'Invalid credentials',
+            msg: "Invalid credentials",
           },
         ],
       });
@@ -51,10 +51,10 @@ exports.register = async (req, res) => {
       (err, token) => {
         if (err) throw err;
         return res.json({ token });
-      },
+      }
     );
   } catch (err) {
     console.error(err.message);
-    return res.status(500).json({ msg: 'Internal server error' });
+    return res.status(500).json({ msg: "Internal server error" });
   }
 };
